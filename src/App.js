@@ -5,6 +5,8 @@ class App extends Component {
   state = {
     currentPage: 1,
     currentNearPages: [1,2,3,4,5,6,7,8,9,10],
+    hasNextPages: true,
+    hasPrevPages: false,
   }
 
   componentDidMount() {
@@ -31,6 +33,7 @@ class App extends Component {
       <div style={{textAlign:'center'}}>
         {this.state.currentPage}
         <hr/>
+        {this.state.hasPrevPages ? '이전' : ''}
         {this.state.currentNearPages.map((item, i) => {
         return <div key={i} style={{display:'inline-block', marginRight:'5px'}}>
           {item === this.state.currentPage
@@ -39,6 +42,7 @@ class App extends Component {
           }
         </div>
         })}
+        {this.state.hasNextPages ? '다음' : ''}
       </div>
     );
   }
