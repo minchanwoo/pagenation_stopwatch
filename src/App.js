@@ -14,6 +14,15 @@ class App extends Component {
       const { currentPage } = this.state;
       if(currentPage < 40) {
         if(currentPage % 10 === 0) {
+          if(currentPage === 30) {
+            this.setState({
+              hasNextPages: false,
+            })
+          }else if(currentPage === 10) { //이부분은 else if로 써도되고 위의 if(currentPage === 30) 이부분과 별도롤 if 로 써도된다
+            this.setState({
+              hasPrevPages: true,
+            })
+          }
           const newNearPages = [currentPage+1,currentPage+2,currentPage+3,currentPage+4,currentPage+5,currentPage+6,currentPage+7,currentPage+8,currentPage+9,currentPage+10];
           this.setState({
             currentPage: currentPage + 1,
