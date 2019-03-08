@@ -34,7 +34,8 @@ class App extends Component {
               hasPrevPages: true,
             })
           }
-          const newNearPages = ArrayByNumber(currentPage+1, currentPage + PAGES_PER_PAGES_LIST);
+          const newNearPages = ArrayByNumber(currentPage+1, Math.min(currentPage + PAGES_PER_PAGES_LIST, TOTAL_PAGES));
+          //Math.min은 currentPage + PAGES_PER_PAGES_LIST는 현재105이고, TOTAL_PAGES는 100인데 둘이 비교해서 작은걸 true로 쓰겠다는뜻임
           this.setState({
             currentPage: currentPage + 1,
             currentNearPages: newNearPages, 
