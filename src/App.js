@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { lstat } from 'fs';
+
 
 const TOTAL_PAGES = 100;
 const PAGES_PER_PAGES_LIST = 7;
@@ -25,7 +25,7 @@ class App extends Component {
       const { currentPage } = this.state;
       if(currentPage < TOTAL_PAGES) {
         if(currentPage % PAGES_PER_PAGES_LIST === 0) {
-          if(currentPage === TOTAL_PAGES - PAGES_PER_PAGES_LIST) {
+          if(currentPage >= TOTAL_PAGES - PAGES_PER_PAGES_LIST) {
             this.setState({
               hasNextPages: false,
             })
@@ -46,7 +46,7 @@ class App extends Component {
           })
         }
       }
-    }, 100)
+    }, 50)
   } 
   
   render() {
