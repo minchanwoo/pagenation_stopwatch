@@ -9,10 +9,12 @@ class App extends Component {
 
   componentDidMount() {
     setInterval(()=> {
-      this.setState({
-        currentPage: this.state.currentPage + 1,
-      });
-    }, 1000)
+      if(this.state.currentPage < 10) {
+        this.setState({
+          currentPage: this.state.currentPage + 1,
+        });
+      }
+    }, 400)
   } 
   
   render() {
