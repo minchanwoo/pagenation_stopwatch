@@ -1,12 +1,21 @@
 import React, { Component } from 'react';
+import { lstat } from 'fs';
 
-const TOTAL_PAGES = 40;
-const PAGES_PER_PAGES_LIST = 10;
+const TOTAL_PAGES = 100;
+const PAGES_PER_PAGES_LIST = 7;
+
+function ArrayByNumber(from, to) {
+  var list = [];
+  for(var i=from; i <= to; i++) {
+    list.push(i);
+  }
+  return list;
+}
 
 class App extends Component {
   state = {
     currentPage: 1,
-    currentNearPages: [1,2,3,4,5,6,7,8,9,10],
+    currentNearPages: ArrayByNumber(1, PAGES_PER_PAGES_LIST),
     hasNextPages: true,
     hasPrevPages: false,
   }
@@ -25,7 +34,7 @@ class App extends Component {
               hasPrevPages: true,
             })
           }
-          const newNearPages = [currentPage+1,currentPage+2,currentPage+3,currentPage+4,currentPage+5,currentPage+6,currentPage+7,currentPage+8,currentPage+9,currentPage+10];
+          const newNearPages = ArrayByNumber(currentPage+1, currentPage + PAGES_PER_PAGES_LIST);
           this.setState({
             currentPage: currentPage + 1,
             currentNearPages: newNearPages, 
@@ -36,7 +45,7 @@ class App extends Component {
           })
         }
       }
-    }, 200)
+    }, 100)
   } 
   
   render() {
