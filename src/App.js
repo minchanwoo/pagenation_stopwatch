@@ -9,12 +9,19 @@ class App extends Component {
 
   componentDidMount() {
     setInterval(()=> {
-      if(this.state.currentPage < 10) {
-        this.setState({
-          currentPage: this.state.currentPage + 1,
-        });
+      if(this.state.currentPage < 20) {
+        if(this.state.currentPage === 10) {
+          this.setState({
+            currentPage: this.state.currentPage + 1,
+            currentNearPages: [11, 12, 13, 14, 15, 16, 17, 18, 19, 20],  
+          })
+        } else {
+          this.setState({
+            currentPage: this.state.currentPage + 1,
+          })
+        }
       }
-    }, 400)
+    }, 200)
   } 
   
   render() {
