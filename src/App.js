@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+const TOTAL_PAGES = 40;
+const PAGES_PER_PAGES_LIST = 10;
 
 class App extends Component {
   state = {
@@ -12,13 +14,13 @@ class App extends Component {
   componentDidMount() {
     setInterval(()=> {
       const { currentPage } = this.state;
-      if(currentPage < 40) {
-        if(currentPage % 10 === 0) {
-          if(currentPage === 30) {
+      if(currentPage < TOTAL_PAGES) {
+        if(currentPage % PAGES_PER_PAGES_LIST === 0) {
+          if(currentPage === TOTAL_PAGES - PAGES_PER_PAGES_LIST) {
             this.setState({
               hasNextPages: false,
             })
-          }else if(currentPage === 10) { //이부분은 else if로 써도되고 위의 if(currentPage === 30) 이부분과 별도롤 if 로 써도된다
+          }else if(currentPage === PAGES_PER_PAGES_LIST) { //이부분은 else if로 써도되고 위의 if(currentPage === 30) 이부분과 별도롤 if 로 써도된다
             this.setState({
               hasPrevPages: true,
             })
