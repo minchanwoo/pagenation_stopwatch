@@ -26,6 +26,7 @@ class App extends Component {
       if(currentPage < TOTAL_PAGES) {
         if(currentPage % PAGES_PER_PAGES_LIST === 0) {
           if(currentPage >= TOTAL_PAGES - PAGES_PER_PAGES_LIST) {
+            //if(TOTAL_PAGES - currentPage <= PAGES_PER_PAGES_LIST) 이렇게 쓸수도 있음, (7 > (100-94=6)이므로 94번부터 다음버튼이 사라진다고 생각하면됨.)
             this.setState({
               hasNextPages: false,
             })
@@ -50,20 +51,21 @@ class App extends Component {
   } 
   
   render() {
+    const { currentPage, hasPrevPages, currentNearPages, hasNextPages } = this.state;
     return (
       <div style={{textAlign:'center'}}>
-        {this.state.currentPage}
+        {currentPage}
         <hr/>
-        {this.state.hasPrevPages ? '이전' : ''}
-        {this.state.currentNearPages.map((item, i) => {
+        {hasPrevPages ? '이전' : ''}
+        {currentNearPages.map((item, i) => {
         return <div key={i} style={{display:'inline-block', marginRight:'5px'}}>
-          {item === this.state.currentPage
+          {item === currentPage
             ? <strong>{item}</strong>
             : <span>{item}</span>
           }
         </div>
         })}
-        {this.state.hasNextPages ? '다음' : ''}
+        {hasNextPages ? '다음' : ''}
       </div>
     );
   }
